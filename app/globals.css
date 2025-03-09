@@ -1,1 +1,25 @@
 @import "tailwindcss";
+/* @plugin "daisyui"; */
+@plugin "daisyui" {
+   themes: winter --default;
+}
+
+/* :root {
+   --foreground-rgb: 0, 0, 0;
+}
+
+@media (prefers-color-scheme: dark) {
+   :root {
+      --foreground-rgb: 255, 255, 255;
+   }
+}
+
+body {
+   color: rgb(var(--foreground-rgb));
+} */
+
+@layer base {
+   h1 {
+      /* @apply font-extrabold text-2xl mb-3 font-poppins; */
+   }
+}

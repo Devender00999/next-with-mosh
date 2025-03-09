@@ -13,12 +13,24 @@ const UserPages = async () => {
    return (
       <div>
          <h1>Users</h1>
-         <div>{new Date().toLocaleString()}</div>
-         <ul>
-            {users.map((user) => (
-               <li key={user.id}>{user.name}</li>
-            ))}
-         </ul>
+         <table className="table table-bordered">
+            <thead>
+               <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+               </tr>
+            </thead>
+            <tbody>
+               {users.map((user) => (
+                  <tr>
+                     <td>{user.id}</td>
+                     <td>{user.name}</td>
+                     <td>{user.email}</td>
+                  </tr>
+               ))}
+            </tbody>
+         </table>
       </div>
    );
 };
