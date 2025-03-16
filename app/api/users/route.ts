@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import users from "../data.json";
 import User from "./schema";
+import { prisma } from "@/prisma/client";
 
-export function GET(request: NextRequest) {
+export async function GET(request: NextRequest) {
+   const users = await prisma.user.findMany();
    return NextResponse.json(users);
 }
 
@@ -11,9 +12,6 @@ export async function POST(request: NextRequest) {
    const validate = User.safeParse(userDetails);
    if (!validate.success)
       return NextResponse.json(validate.error, { status: 400 });
-   users.push({ id: users.length + 1, ...userDetails });
-   return NextResponse.json(
-      { message: "User added successfully." },
-      { status: 201 }
-   );
+   const res = await prisma.user.create({ data: userDetails });
+   return NextResponse.json(res, { status: 201 });
 }
