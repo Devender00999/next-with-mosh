@@ -8,18 +8,19 @@ export default function Home() {
    return (
       <main className="relative h-screen">
          {/* <Image src={coffee} alt="Coffee"  /> */}
-         <Image
+         {/* <Image
             src="https://bit.ly/react-cover"
             fill
             alt="React Cover"
             style={{ objectFit: "cover" }}
             sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 33vw"
-            quality={10}
+            quality={100}
             priority
-         />
+         /> */}
          {/* <div>Hello World</div>
          <Link href="/users">Users</Link>
          <ProductCart /> */}
+         <button className="btn btn-secondary font-poppins">Secondary</button>
       </main>
    );
 }
