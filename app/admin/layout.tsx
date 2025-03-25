@@ -5,7 +5,7 @@ interface Props {
 }
 const AdminLayout = ({ children }: Props) => {
    return (
-      <div className="flex h-screen w-screen">
+      <div className="flex h-[calc(100vh-40px)] w-screen">
          <div className="w-[10rem] bg-gray-500 text-white px-4">
             <ul className="mt-4 flex flex-col gap-3">
                <li>Item 1</li>
