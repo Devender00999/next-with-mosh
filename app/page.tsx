@@ -1,10 +1,17 @@
 "use client";
-import Link from "next/link";
-import ProductCart from "./components/ProductCart";
-import Image from "next/image";
-import coffee from "@/public/image.jpg";
+import dynamic from "next/dynamic";
+import { useState } from "react";
+
+import _ from "lodash";
+// import HeavyComponent from "./components/HeavyComponent";
+const HeavyComponent = dynamic(() => import("./components/HeavyComponent"), {
+   ssr: false,
+   loading: () => <p>Loading...</p>,
+});
 
 export default function Home() {
+   const [isVisible, setIsVisible] = useState(false);
+
    return (
       <main className="relative h-screen">
          {/* <Image src={coffee} alt="Coffee"  /> */}
@@ -20,7 +27,22 @@ export default function Home() {
          {/* <div>Hello World</div>
          <Link href="/users">Users</Link>
          <ProductCart /> */}
-         <button className="btn btn-secondary font-poppins">Secondary</button>
+         {isVisible && <HeavyComponent />}
+         <button
+            className="btn btn-secondary font-poppins"
+            onClick={async () => {
+               const _ = (await import("lodash")).default;
+               const a = [
+                  { val: "a" },
+                  { val: "c" },
+                  { val: "b" },
+                  { val: "d" },
+               ];
+               console.log(_.orderBy(a, "val"));
+            }}
+         >
+            Secondary
+         </button>
       </main>
    );
 }
