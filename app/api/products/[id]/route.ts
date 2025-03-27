@@ -2,9 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import Product from "../schema";
 import { prisma } from "@/prisma/client";
 interface Props {
-   params: { id: string };
+   params: Promise<Record<string, string>>;
 }
-const products = [{ id: 1, name: "Soap", price: 130 }];
 export async function GET(req: NextRequest, { params }: Props) {
    const { id } = await params;
 

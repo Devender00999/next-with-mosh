@@ -1,13 +1,16 @@
-import React, { Suspense } from "react";
 import UserTable from "./UserTable";
 
-const UserPages = async ({ searchParams }: any) => {
+const UserPages = async ({
+   searchParams,
+}: {
+   searchParams: Promise<Record<string, string>>;
+}) => {
    const { sortOrder } = await searchParams;
    console.log({ sortOrder });
    return (
       <div>
          {/* <Suspense fallback={<span>Loading...</span>}> */}
-         <UserTable sortOrder={sortOrder as string} />
+         <UserTable sortOrder={sortOrder as "name"} />
          {/* </Suspense> */}
       </div>
    );

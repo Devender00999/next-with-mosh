@@ -7,7 +7,7 @@ interface User {
    email: string;
 }
 
-const UserTable = async ({ sortOrder }: any) => {
+const UserTable = async ({ sortOrder }: { sortOrder: "name" | "email" }) => {
    const res = await fetch("https://jsonplaceholder.typicode.com/users", {
       cache: "no-store",
    });
@@ -31,10 +31,8 @@ const UserTable = async ({ sortOrder }: any) => {
             </thead>
             <tbody>
                {users
-                  .sort((a: any, b: any) =>
-                     a?.[sortOrder || "name"]?.localeCompare(
-                        b?.[sortOrder || "name"]
-                     )
+                  .sort((a: User, b: User) =>
+                     a?.[sortOrder]?.localeCompare(b?.[sortOrder])
                   )
                   ?.map((user) => (
                      <tr key={user.id}>

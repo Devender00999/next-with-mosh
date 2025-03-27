@@ -1,9 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
-import users from "../../data.json";
-import User from "../schema";
 import { prisma } from "@/prisma/client";
+import { NextRequest, NextResponse } from "next/server";
+import User from "../schema";
 interface Props {
-   params: { id: string };
+   params: Promise<{ id: string }>;
 }
 export async function GET(req: NextRequest, { params }: Props) {
    const { id } = await params;

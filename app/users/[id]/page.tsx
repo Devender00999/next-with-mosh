@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 
 interface Props {
-   params: { id: number };
+   params: Promise<{ id: number }>;
 }
 const UserDetailsPage = async ({ params }: Props) => {
    const { id } = await params;

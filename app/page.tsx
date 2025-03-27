@@ -1,17 +1,6 @@
 "use client";
-import dynamic from "next/dynamic";
-import { useState } from "react";
-
-import _ from "lodash";
-// import HeavyComponent from "./components/HeavyComponent";
-const HeavyComponent = dynamic(() => import("./components/HeavyComponent"), {
-   ssr: false,
-   loading: () => <p>Loading...</p>,
-});
 
 export default function Home() {
-   const [isVisible, setIsVisible] = useState(false);
-
    return (
       <main className="relative h-screen">
          {/* <Image src={coffee} alt="Coffee"  /> */}
@@ -27,7 +16,6 @@ export default function Home() {
          {/* <div>Hello World</div>
          <Link href="/users">Users</Link>
          <ProductCart /> */}
-         {isVisible && <HeavyComponent />}
          <button
             className="btn btn-secondary font-poppins"
             onClick={async () => {
