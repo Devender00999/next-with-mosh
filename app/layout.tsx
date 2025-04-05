@@ -24,7 +24,7 @@ export default function RootLayout({
          <AuthProvider>
             <body className={`${poppins.variable} antialiased`}>
                <Navbar />
-               <div className="">{children}</div>
+               <div className="px-3 pt-3">{children}</div>
             </body>
          </AuthProvider>
       </html>

@@ -1,36 +1,10 @@
-"use client";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "./api/auth/[...nextauth]/route";
 
-export default function Home() {
+export default async function Home() {
+   const session = await getServerSession(authOptions);
+   console.log(session);
    return (
-      <main className="relative h-screen">
-         {/* <Image src={coffee} alt="Coffee"  /> */}
-         {/* <Image
-            src="https://bit.ly/react-cover"
-            fill
-            alt="React Cover"
-            style={{ objectFit: "cover" }}
-            sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 33vw"
-            quality={100}
-            priority
-         /> */}
-         {/* <div>Hello World</div>
-         <Link href="/users">Users</Link>
-         <ProductCart /> */}
-         <button
-            className="btn btn-secondary font-poppins"
-            onClick={async () => {
-               const _ = (await import("lodash")).default;
-               const a = [
-                  { val: "a" },
-                  { val: "c" },
-                  { val: "b" },
-                  { val: "d" },
-               ];
-               console.log(_.orderBy(a, "val"));
-            }}
-         >
-            Secondary
-         </button>
-      </main>
+      <main className="relative h-screen">Hello {session?.user?.name}</main>
    );
 }
