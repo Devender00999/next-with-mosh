@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import AuthProvider from "./auth/AuthProvider";
 import Navbar from "./components/Navbar";
 import "./globals.css";
-import { SessionProvider } from "next-auth/react";
-import AuthProvider from "./auth/AuthProvider";
 
 const poppins = localFont({
    src: "../public/fonts/poppins-regular.ttf",
